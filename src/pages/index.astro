@@ -1,11 +1,54 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// src/pages/index.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Loura's Digital Garden">
+    <h1>Hello World!!</h1>
+    <p>
+        Welcome to my public notebook where I share code, craft patterns, and
+        ongoing learnings.
+    </p>
+
+    <h2>Featured Garden Note Categories</h2>
+
+    <div class="card-grid">
+        <div class="card">
+            <h3>⚙️ Test Automation</h3>
+            <p>Playwright scripts, CI/CD pipelines, and QA strategies.</p>
+        </div>
+
+        <div class="card">
+            <h3>🧶 Craft Patterns</h3>
+            <p>Crochet stitch guides, yarn calculations, and WIPs.</p>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+    /* 1. Responsive Grid Container */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.25rem;
+        margin-top: 1.5rem;
+    }
+
+    /* 2. Card Box Styling (Inherits your global colors!) */
+    .card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+    }
+
+    .card h3 {
+        margin-top: 0;
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        margin-bottom: 0;
+        color: var(--text-muted);
+    }
+</style>

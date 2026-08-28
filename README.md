@@ -1,10 +1,9 @@
-# Astro Starter Kit: Basics
+# Astro Explanations: Folders to leave alone
 
-```sh
-npm create astro@latest -- --template basics
-```
+.astro contains the auto-generated cache. Ensure this is in the .gitignore, you don't want this in version control.
+.vscode contains the workspace settings, works for Zed and VScode. May or may not want this in version control.
+.node_modules is the engine room and will contain the actual code for external dependencies used in the project downloaded by npm.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 ## 🚀 Project Structure
 
@@ -27,6 +26,12 @@ Inside of your Astro project, you'll see the following folders and files:
 ```
 
 To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+
+/public contains all downloadable assets that are served as-is by the web server without astro compiling or optimizing it.
+  favicon.ico, favicon.svg, robots.txt, manifest files, raw downloadble assets (pdf crochet patterns).
+  How it works: public/favicon.svg is downloadable at http://localhost:4321/favicon.svg and is directly accessible in the browser.
+
+/src contains the source code and this is where building happens. Naturally. Put files in the correct folders to stay sane.
 
 ## 🧞 Commands
 
