@@ -1,0 +1,92 @@
+---
+// src/components/TagPill.astro
+
+interface Props {
+    tag: string;
+}
+
+const { tag } = Astro.props;
+const normalizedTag = String(tag).toLowerCase().trim();
+
+// Palette matching your warm "Study Room" theme tones
+const tagColorMap: Record<
+    string,
+    {
+        light: { bg: string; text: string; border: string };
+        dark: { bg: string; text: string; border: string };
+    }
+> = {
+    learnings: {
+        light: { bg: "#e0f2fe", text: "#0369a1", border: "#bae6fd" },
+        dark: { bg: "#0c4a6e", text: "#bae6fd", border: "#0284c7" },
+    },
+    tech: {
+        light: { bg: "#e6f4f1", text: "#1b5e5e", border: "#b2dfdb" }, // Harmonizes with your teal --accent-color
+        dark: { bg: "#133838", text: "#80cbc4", border: "#2a7f7f" },
+    },
+    homelab: {
+        light: { bg: "#fdf0e7", text: "#8c4318", border: "#f7d0b7" }, // Harmonizes with your terracotta --active-color
+        dark: { bg: "#3d1e0d", text: "#e8b08d", border: "#b96a3a" },
+    },
+    testing: {
+        light: { bg: "#fae8ff", text: "#7e22ce", border: "#f5d0fe" },
+        dark: { bg: "#3b0764", text: "#e9d5ff", border: "#7e22ce" },
+    },
+    crochet: {
+        light: { bg: "#fce7f3", text: "#be185d", border: "#fbcfe8" },
+        dark: { bg: "#500724", text: "#fbcfe8", border: "#9d174d" },
+    },
+};
+
+const defaultColors = {
+    light: { bg: "#eae5d9", text: "#4a4238", border: "#e2ddd3" },
+    dark: { bg: "#2d2d35", text: "#d1c7bd", border: "#33333b" },
+};
+
+const palette = tagColorMap[normalizedTag] || defaultColors;
+---
+
+<a href={`/tags/${normalizedTag}`} class="tag-pill">
+    #{tag}
+</a>
+
+<style
+    define:vars={{
+        lightBg: palette.light.bg,
+        lightText: palette.light.text,
+        lightBorder: palette.light.border,
+        darkBg: palette.dark.bg,
+        darkText: palette.dark.text,
+        darkBorder: palette.dark.border,
+    }}
+>
+    .tag-pill {
+        display: inline-block;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        font-family: var(--font-body);
+        border-radius: 9999px;
+        text-decoration: none;
+
+        /* Light Mode defaults */
+        background-color: var(--lightBg);
+        color: var(--lightText);
+        border: 1px solid var(--lightBorder);
+
+        transition: all 0.2s ease;
+    }
+
+    .tag-pill:hover {
+        transform: translateY(-1px);
+        opacity: 0.9;
+    }
+
+    /* Force dark mode styles when data-theme="dark" is active on html */
+    :global(:root[data-theme="dark"]) .tag-pill,
+    :global(html[data-theme="dark"]) .tag-pill {
+        background-color: var(--darkBg) !important;
+        color: var(--darkText) !important;
+        border-color: var(--darkBorder) !important;
+    }
+</style>

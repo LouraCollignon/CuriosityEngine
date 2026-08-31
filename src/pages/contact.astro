@@ -1,0 +1,63 @@
+---
+// src/pages/contact.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// You can write server-side JS logic or import components here!
+
+//Why static sites use services like Formspree or Netlify Forms
+
+//Since Astro generates a static website (meaning there is no active backend server running 24/7 to process incoming emails), you generally rely on a lightweight form service:
+
+//Static Form Service (e.g., Formspree or Web3Forms): You point the form's action attribute to their endpoint. When a user clicks submit, they route the message straight to your personal inbox without you exposing your email address to spam bots.
+
+//Netlify Forms (if hosting on Netlify): You simply add a data-netlify="true" attribute to your <form> tag in Astro, and Netlify captures all submissions automatically for free.
+
+//By building contact.astro as a .astro file, you get total control over the form markup, full design integration with your BaseLayout, and the ability to process form logic cleanly!
+---
+
+<BaseLayout title="Contact Me | Curiosity Engine">
+    <h1>Contact Me</h1>
+    <p>
+        Have a question about a Playwright script, a craft pattern, or privacy?
+        Send a message below!
+    </p>
+
+    <form
+        class="contact-form"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+    >
+        <div class="form-input">
+            <label class="label-name" for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-input">
+            <label class="label-name" for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-input">
+            <label class="label-name" for="message">Message:</label>
+            <textarea
+                class="textarea"
+                id="message"
+                name="message"
+                rows="7"
+                required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+    </form>
+</BaseLayout>
+
+<style>
+    .textarea {
+        width: 40rem;
+    }
+
+    .label-name {
+        padding-right: 1rem;
+    }
+
+    .form-input {
+        padding-bottom: 1.125rem;
+    }
+</style>

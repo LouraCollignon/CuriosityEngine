@@ -1,0 +1,59 @@
+---
+//src/components/Footer.astro
+// (No scipt setup needed in the frontmatter for this component)
+---
+
+<!-- Site Footer -->
+<footer class="site-footer">
+    <div class="container footer-content">
+        <p class="copyright">
+            © {new Date().getFullYear()} Loura Collignon • Learning in public
+        </p>
+        <nav class="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Use</a>
+            <a href="/contact">Contact Me</a>
+        </nav>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        border-top: 1px solid var(--border-color);
+        padding: 1.5rem 0;
+        font-size: 0.85rem;
+        color: var(--text-color);
+        text-align: center;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between; /* Pushes text left and links right */
+        align-items: center; /* Vertically centers both sides */
+        flex-wrap: wrap; /* Allows smooth wrapping on small mobile screens */
+        gap: 1rem; /* Keeps items from touching on mid-sized screens */
+    }
+
+    .copyright {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 1.125rem; /* Spaces out the Privacy and Terms links */
+    }
+
+    .footer-links a {
+        font-size: 0.9rem;
+        color: var(--active-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+</style>

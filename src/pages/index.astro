@@ -3,8 +3,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Loura's Digital Garden">
-    <h1>Hello World!!</h1>
+<BaseLayout title="Curiosity Engine">
+    <h1>hello world!</h1>
     <p>
         Welcome to my public notebook where I share code, craft patterns, and
         ongoing learnings.
@@ -29,26 +29,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     /* 1. Responsive Grid Container */
     .card-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.25rem;
-        margin-top: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
     }
 
-    /* 2. Card Box Styling (Inherits your global colors!) */
     .card {
         background-color: var(--card-bg);
         border: 1px solid var(--border-color);
         border-radius: 12px;
-        padding: 1.5rem;
+        padding: 1.75rem;
     }
 
     .card h3 {
-        margin-top: 0;
-        font-size: 1.2rem;
+        font-size: 1.35rem;
+        margin-bottom: 0.6rem;
     }
 
     .card p {
-        margin-bottom: 0;
+        font-size: 1rem;
         color: var(--text-muted);
+        line-height: 1.5;
     }
 </style>
