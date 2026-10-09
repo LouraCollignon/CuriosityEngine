@@ -1,20 +1,20 @@
 ---
-import { getCollection, render, type CollectionEntry } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import TagPill from "../../components/TagPill.astro";
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagPill from '../../components/TagPill.astro';
 
 export async function getStaticPaths() {
-    const blogEntries = await getCollection("blog");
+  const blogEntries = await getCollection('blog');
 
-    return blogEntries.map((entry) => ({
-        params: { slug: entry.id },
-        props: { entry },
-    }));
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
 }
 
 // Explicitly define the props type for Zed's LSP
 interface Props {
-    entry: CollectionEntry<"blog">;
+  entry: CollectionEntry<'blog'>;
 }
 
 const { entry } = Astro.props;
@@ -22,40 +22,38 @@ const { Content } = await render(entry);
 ---
 
 <BaseLayout title={entry.data.title}>
-    <article class="blog-post">
-        <h1>{entry.data.title}</h1>
-        <p class="post-date">{entry.data.pubDate.toLocaleDateString()}</p>
-        {
-            entry.data.description && (
-                <p class="description">{entry.data.description}</p>
-            )
-        }
-        {/* 2. Display the tag pills below the metadata */}
-        {
-            entry.data.tags && entry.data.tags.length > 0 && (
-                <div class="tag-container">
-                    {entry.data.tags.map((tag) => (
-                        <TagPill tag={tag} />
-                    ))}
-                </div>
-            )
-        }
-        <hr />
+  <article class="blog-post">
+    <h1>{entry.data.title}</h1>
+    <p class="post-date">{entry.data.pubDate.toLocaleDateString()}</p>
+    {entry.data.description && (
+      <p class="description">{entry.data.description}</p>
+    )}
+    {entry.data.updatedDate && (
+      <p class="updatedDate">{entry.data.updatedDate}</p>
+    )}
+    {entry.data.tags && entry.data.tags.length > 0 && (
+      <div class="tag-container">
+        {entry.data.tags.map((tag) => (
+          <TagPill tag={tag} />
+        ))}
+      </div>
+    )}
+    <hr />
 
-        <Content />
-    </article>
+    <Content />
+  </article>
 </BaseLayout>
 
 <style>
-    .description {
-        font-style: italic;
-        color: #666;
-    }
+  .description {
+    font-style: italic;
+    color: #666;
+  }
 
-    .tag-container {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        margin: 1rem 0;
-    }
+  .tag-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+  }
 </style>

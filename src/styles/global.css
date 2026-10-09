@@ -1,71 +1,87 @@
 /* src/styles/global.css */
 
 /* Register local fonts */
-@font-face{
-    font-family: IBM Plex Mono;
-    src: url('/fonts/IBMPlexMono-Regular.woff2') format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+@font-face {
+  font-family: IBM Plex Mono;
+  src: url('/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@font-face{
-    font-family: Fraunces;
-    src: url('/fonts/Fraunces-VariableFont.woff2') format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+@font-face {
+  font-family: Fraunces;
+  src: url('/fonts/Fraunces-VariableFont.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
-@font-face{
-    font-family: Source Sans3;
-    src: url('/fonts/SourceSans3-VariableFont.woff2') format("woff2");
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
+@font-face {
+  font-family: Source Sans3;
+  src: url('/fonts/SourceSans3-VariableFont.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* 1. Default Light Theme (Study Room by Day) */
 :root {
-  --bg-color: #F8F5F0;
-  --text-color: #2A2622;
-  --text-muted: #525252; /* didn't pick this */
-  --card-bg: #FFFDF8;
-  --border-color: #e2ddd3; /* didn't pick this */
-  --active-color: #B96A3A;
-  --accent-color: #2A7F7F;
+  --bg-color: #f8f5f0;
+  --text-color: #2a2622;
+  --text-muted: #525252;
+  --card-bg: #fffdf8;
+  --border-color: #e2ddd3;
+  --active-color: #b96a3a;
+  --header-copper: #9e4b37;
+  --accent-color: #2a7f7f;
+  --footer-bg: #264d54;
+  /*#1a2028*/
+  --footer-text: #a3c2c6;
+  --header-bg: #9e4b37;
+  --header-text: #f8f5f0;
 
   /* Inverted button colors for Light Mode */
-    --toggle-bg: #171718;   /* Uses the dark theme card/bg color */
-    --toggle-text: #E8E4DE; /* Uses the dark theme text color */
+  --toggle-bg: #171718;
+  /* Uses the dark theme card/bg color */
+  --toggle-text: #e8e4de;
+  /* Uses the dark theme text color */
 
-    /* Fonts */
-    --font-heading: "Fraunces", Georgia, serif;
-    --font-body: "Source Sans3", system-ui, -apple-system, sans-serif;
-    --font-code: "IBM Plex Mono", monospace;
+  /* Fonts */
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Source Sans3', system-ui, -apple-system, sans-serif;
+  --font-code: 'IBM Plex Mono', monospace;
 }
 
 /* 2. Dark Theme Overrides (Study Room by Night) */
-[data-theme="dark"] {
-  --bg-color: #171718; /*171718*/
-  --text-color: #EAE5d9; /*E8E4DE*/
-  --text-muted: #b0a99f; /* didn't pick this */
+[data-theme='dark'] {
+  --bg-color: #171718;
+  --text-color: #eae5d9;
+  --text-muted: #b0a99f;
   --card-bg: #141412;
-  --border-color: #33333b; /* didn't pick this */
-  --active-color: #5EB9B8;
-  --accent-color: #D08F62;
+  --border-color: #33333b;
+  --active-color: #5eb9b8;
+  --accent-color: #d08f62;
+  --footer-bg: #112125;
+  --footer-text: #eae6de;
+  --header-bg: #3b211b;
 
   /* Inverted button colors for Dark Mode */
-  --toggle-bg: #F8F5F0;   /* Uses the light theme card/bg color */
-  --toggle-text: #2A2622; /* Uses the light theme text color */
+  --toggle-bg: #f8f5f0;
+  /* Uses the light theme card/bg color */
+  --toggle-text: #2a2622;
+  /* Uses the light theme text color */
 }
 
 /* Base Body Styles */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -74,7 +90,8 @@ html, body {
 .site-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Minimum 100% of the viewport height */
+  min-height: 100vh;
+  /* Minimum 100% of the viewport height */
 }
 
 /* Main should take all the space now, not the footer */
@@ -90,13 +107,20 @@ body {
   font-family: var(--font-body);
   font-size: 1.125rem;
   line-height: 1.6;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
-h1, h2, h3 {
-    font-family: var(--font-heading);
-    font-variation-settings: "opsz" 144, "WONK" 1, "SOFT" 0;
-    font-optical-sizing: auto;
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-variation-settings:
+    'opsz' 144,
+    'WONK' 1,
+    'SOFT' 0;
+  font-optical-sizing: auto;
 }
 
 h1 {
@@ -121,19 +145,23 @@ a:hover {
   text-decoration: underline;
 }
 
-code, pre, kbd, .theme-btn, .tag-pill{
-    font-family: var(--font-code);
+code,
+pre,
+kbd,
+.theme-btn,
+.tag-pill {
+  font-family: var(--font-code);
 }
 
 /* Reusable Container */
 .container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
 .main-content {
-  max-width: 800px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }

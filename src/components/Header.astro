@@ -2,138 +2,181 @@
 // src/components/ThemeToggle.astro
 // (No scipt setup needed in the frontmatter for this component)
 
-import ThemeToggle from "./ThemeToggle.astro";
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <!-- Navigation Header -->
 <header class="site-header">
-    <div class="header-container">
-        <a href="/" class="brand-logo"> Curiosity Engine 🌱 </a>
+  <div class="header-container">
+    <img
+      src="/headerdark.png"
+      alt="Curiosity Engine Logo"
+      class="header-logo logo-dark-theme"
+    />
+    <img
+      src="/headerlight.png"
+      alt="Curiosity Engine Logo"
+      class="header-logo logo-light-theme"
+    />
 
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-        <label
-            for="menu-toggle"
-            class="hamburger"
-            aria-label="Toggle Navigation Menu"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+    <label
+      for="menu-toggle"
+      class="hamburger"
+      aria-label="Toggle Navigation Menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
 
-        <nav class="nav-links">
-            <a href="/">Home</a>
-            <a href="/now">Now</a>
-            <a href="/uses">Uses</a>
-            <a href="/blog">Blogs</a>
-            <a href="/about">About</a>
-            <ThemeToggle />
-        </nav>
-    </div>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/now">Now</a>
+      <a href="/uses">Uses</a>
+      <a href="/blog">Blogs</a>
+      <a href="/about">About</a>
+      <ThemeToggle />
+    </nav>
+  </div>
 </header>
 
 <style>
-    .site-header {
-        border-bottom: 1px solid var(--border-color, #e5e5e5);
-        padding: 1rem 1.5rem;
-    }
+  /* By default (Light Mode): Show light-theme logo, hide dark-theme logo */
+  .logo-dark-theme {
+    display: none;
+  }
 
-    .header-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
+  /* When Dark Mode is active on the html or body element: Swap them */
+  :global(html[data-theme='dark']) .logo-light-theme {
+    display: none;
+  }
+  :global(html[data-theme='dark']) .logo-dark-theme {
+    display: block;
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(1.35) contrast(1.1)
+      drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  }
 
-    .brand-logo {
-        font-size: 1.25rem;
-        font-weight: bold;
-        text-decoration: none;
-        color: inherit;
-        white-space: nowrap; /* Prevents title from squishing! */
-    }
+  .site-header {
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color, #e5e5e5);
+    padding: 1rem 1.5rem;
+  }
 
-    /* Desktop Links */
-    .nav-links {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-    }
+  .header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
 
-    .nav-links a {
-        text-decoration: none;
-        color: var(--accent-color);
-    }
+  .brand-logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap; /* Prevents title from squishing! */
+  }
 
-    /* Hide mobile elements on Desktop */
-    .menu-toggle,
+  .logo-light-theme {
+    /* Adjust height to fit your footer proportions */
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    /* Optional: slightly soften bright white illustrations on dark backgrounds */
+    opacity: 0.9;
+    filter: invert(0.95) hue-rotate(180deg) brightness(1.6);
+    transition: filter 0.3s ease;
+  }
+
+  /* Desktop Links */
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--header-text);
+  }
+
+  .nav-links:hover {
+    color: var(--accent-color);
+  }
+
+  /* Hide mobile elements on Desktop */
+  .menu-toggle,
+  .hamburger {
+    display: none;
+  }
+
+  /* ---------------------------------- */
+  /* MOBILE STYLES (Screens < 640px)    */
+  /* ---------------------------------- */
+  @media (max-width: 640px) {
+    /* Show Hamburger Icon */
     .hamburger {
-        display: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+      z-index: 10;
     }
 
-    /* ---------------------------------- */
-    /* MOBILE STYLES (Screens < 640px)    */
-    /* ---------------------------------- */
-    @media (max-width: 640px) {
-        /* Show Hamburger Icon */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 24px;
-            height: 18px;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .hamburger span {
-            display: block;
-            height: 2px;
-            width: 100%;
-            background-color: currentColor;
-            border-radius: 2px;
-            transition:
-                transform 0.2s ease,
-                opacity 0.2s ease;
-        }
-
-        /* Keep input hidden */
-        .menu-toggle {
-            display: none;
-        }
-
-        /* Transform Nav into Mobile Dropdown Drawer */
-        .nav-links {
-            display: none; /* Hidden by default */
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: var(--bg-color, #fff);
-            flex-direction: column;
-            padding: 1.5rem;
-            gap: 1.25rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 8px 8px;
-            z-index: 9;
-        }
-
-        /* When checkbox is checked, show the menu! */
-        .menu-toggle:checked ~ .nav-links {
-            display: flex;
-        }
-
-        /* Animate Hamburger into an "X" when open */
-        .menu-toggle:checked ~ .hamburger span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        .menu-toggle:checked ~ .hamburger span:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-toggle:checked ~ .hamburger span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: currentColor;
+      border-radius: 2px;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
     }
+
+    /* Keep input hidden */
+    .menu-toggle {
+      display: none;
+    }
+
+    /* Transform Nav into Mobile Dropdown Drawer */
+    .nav-links {
+      display: none; /* Hidden by default */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-color, #fff);
+      flex-direction: column;
+      padding: 1.5rem;
+      gap: 1.25rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 8px 8px;
+      z-index: 9;
+    }
+
+    /* When checkbox is checked, show the menu! */
+    .menu-toggle:checked ~ .nav-links {
+      display: flex;
+    }
+
+    /* Animate Hamburger into an "X" when open */
+    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
 </style>

@@ -1,20 +1,113 @@
 ---
 // src/pages/about.astro
-import BaseLayout from "../layouts/BaseLayout.astro";
+import ContentLayout from '../layouts/ContentLayout.astro';
 ---
 
-<BaseLayout title="Curiosity Engine: About">
+<ContentLayout title="About | Curiosity Engine">
+  <section class="about-container">
+    <!-- Left Side: Main Title -->
     <h1>About Me</h1>
-    <p>Hi, I'm Loura! I'm a Test Automation Engineer learning in public.</p>
+  </section>
 
-    <h2>What I Do</h2>
+  <!-- Main Narrative Text (Your Written Copy) -->
+  <article class="main-about">
     <p>
-        I focus on test framework architecture, homelabbing, and creative
-        crafts.
+      Long before I started writing automated tests for software, I was using
+      code and computational statistics to analyze the contested authorship of
+      16th-century plays.
     </p>
 
-    <div>
-        <span class="tag-pill">#qa-engineering</span>
-        <span class="tag-pill">#bazzite</span>
-    </div>
-</BaseLayout>
+    <p>
+      While studying English and English Language Joint Honours at De Montfort
+      University in Leicester, I learned that language could be analyzed
+      computationally. In contrast to traditional literary studies, language was
+      stripped of subjective human interpretation and mapped through data. Long
+      before most people encountered Natural Language Processing through modern
+      AI chatbots, I knew it as a statistical tool that revealed the underlying
+      patterns in human expression.
+    </p>
+    <h2>The Academic Footprint</h2>
+    <p>
+      That fascination led me to pursue a master’s degree in Linguistics and
+      Communication in the Netherlands, following a data science-oriented track
+      that combined language, statistics, programming, and computational
+      analysis.
+    </p>
+    <p>
+      Along the way, I had the opportunity to contribute as a co-author to a
+      published psychology research paper. Looking back, that experience taught
+      me something that still influences how I work today: good answers rarely
+      come from assumptions. They come from asking questions, collecting
+      evidence, and following where the data leads.
+    </p>
+    <h2>Testing? Testing?</h2>
+    <p>
+      When I stumbled into Quality Assurance afterwards, I realized something
+      fundamental: code, systems, and test architectures are just another form
+      of language.
+    </p>
+    <p>
+      Just like human language, systems require interpretation. They rely on
+      strict rules of syntax, boundaries of meaning, and underlying structure. A
+      broken automated test suite or a fragile system locator isn't just a
+      technical glitch; it's a breakdown in communication.
+    </p>
+    <p>
+      Although my career eventually moved away from academia, I never left that
+      mindset behind.
+    </p>
+    <h2>Welcome to Curiosity Engine</h2>
+    <p>
+      Welcome to my corner of the internet. The Curiosity Engine has been
+      running for quite some time now and this website reflects what I'm
+      learning, what I'm building, and what I'm currently curious about.
+      Sometimes that's quality engineering or test automation. Sometimes it's a
+      homelab project, a crochet pattern, or a completely unrelated rabbit hole
+      that seemed too interesting not to explore.
+    </p>
+    <p>The subject changes. The curiosity does not.</p>
+  </article>
+</ContentLayout>
+
+<style>
+  .about-container {
+    display: flex;
+    justify-content: space-between; /* Pushes text left and links right */
+    align-items: baseline; /* snaps items to the same height */
+    flex-wrap: wrap; /* Allows smooth wrapping on small mobile screens */
+    gap: 1rem; /* Keeps items from touching on mid-sized screens */
+  }
+
+  .cv-tagpill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    padding: 0.25rem 0.65rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    border-radius: 9999px;
+    text-decoration: none;
+    text-align: justify;
+
+    /* Light Mode defaults */
+    background-color: var(--active-color);
+    color: var(--bg-color);
+    border: 1px solid var(--active-color);
+
+    transition: all 0.2s ease;
+  }
+
+  .cv-tagpill:hover {
+    transform: translateY(-1px);
+    background-color: var(--accent-color);
+    opacity: 0.9;
+  }
+
+  .dl-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+    flex-shrink: 0;
+  }
+</style>

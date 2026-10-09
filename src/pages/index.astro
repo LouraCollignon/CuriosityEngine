@@ -1,53 +1,53 @@
 ---
 // src/pages/index.astro
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Curiosity Engine">
-    <h1>hello world!</h1>
-    <p>
-        Welcome to my public notebook where I share code, craft patterns, and
-        ongoing learnings.
-    </p>
+  <h1>hello world!</h1>
+  <p>
+    Welcome to my public notebook where I share code, craft patterns, and
+    ongoing learnings.
+  </p>
 
-    <h2>Featured Garden Note Categories</h2>
+  <h2>Featured Garden Note Categories</h2>
 
-    <div class="card-grid">
-        <div class="card">
-            <h3>⚙️ Test Automation</h3>
-            <p>Playwright scripts, CI/CD pipelines, and QA strategies.</p>
-        </div>
-
-        <div class="card">
-            <h3>🧶 Craft Patterns</h3>
-            <p>Crochet stitch guides, yarn calculations, and WIPs.</p>
-        </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>⚙️ Test Automation</h3>
+      <p>Playwright scripts, CI/CD pipelines, and QA strategies.</p>
     </div>
+
+    <div class="card">
+      <h3>🧶 Craft Patterns</h3>
+      <p>Crochet stitch guides, yarn calculations, and WIPs.</p>
+    </div>
+  </div>
 </BaseLayout>
 
 <style>
-    /* 1. Responsive Grid Container */
-    .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-    }
+  /* 1. Responsive Grid Container */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
 
-    .card {
-        background-color: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 12px;
-        padding: 1.75rem;
-    }
+  .card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
 
-    .card h3 {
-        font-size: 1.35rem;
-        margin-bottom: 0.6rem;
-    }
+  .card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.6rem;
+  }
 
-    .card p {
-        font-size: 1rem;
-        color: var(--text-muted);
-        line-height: 1.5;
-    }
+  .card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
 </style>

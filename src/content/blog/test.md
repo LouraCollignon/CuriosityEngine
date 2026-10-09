@@ -1,8 +1,8 @@
 ---
-title: "Hello World Post"
+title: 'Hello World Post'
 pubDate: 2026-08-30
-description: "My first post in the garden."
-tags: ["learnings", "crochet", "testing", "tech", "homelab"]
+description: 'My first post in the garden.'
+tags: ['learnings', 'crochet', 'testing', 'tech', 'homelab']
 ---
 
 # Hello World

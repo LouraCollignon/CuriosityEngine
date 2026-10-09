@@ -1,0 +1,63 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import YarnDivider from '../components/YarnDivider.astro';
+import ContentSidebar from '../components/ContentSidebar.astro';
+
+interface Props {
+  title: string;
+  showSidebar?: boolean;
+}
+
+const { title, showSidebar = true } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div class="content-container">
+    <main class:list={['reading-column', { 'full-width': !showSidebar }]}>
+      <slot />
+    </main>
+
+    {showSidebar && (
+      <>
+        <YarnDivider />
+        <aside class="sidebar-wrapper">
+          <ContentSidebar />
+        </aside>
+      </>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  /* Container takes up to 1400px of screen space */
+  .content-container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 900px) {
+    .content-container:has(.sidebar-wrapper) {
+      display: grid;
+      /* Column 1: Takes all available space (min 0 to prevent text overflow bugs)
+       Column 2: Yarn divider (fits its own content)
+       Column 3: Sidebar fixed at 320px */
+      grid-template-columns: minmax(0, 1fr) auto 320px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+  }
+
+  /* Remove any restrictive max-width or auto-margins on the reading column */
+  .reading-column {
+    width: 100%;
+    max-width: 100%; /* Allows it to expand to fill the entire left grid track */
+    margin: 0; /* Prevents auto-centering inside its grid cell */
+  }
+
+  .reading-column.full-width {
+    margin: 0 auto; /* Center single-column pages like Privacy Policy */
+  }
+</style>

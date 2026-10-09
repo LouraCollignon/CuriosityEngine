@@ -1,6 +1,6 @@
 ---
 // src/pages/contact.astro
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 // You can write server-side JS logic or import components here!
 
@@ -16,48 +16,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Contact Me | Curiosity Engine">
-    <h1>Contact Me</h1>
-    <p>
-        Have a question about a Playwright script, a craft pattern, or privacy?
-        Send a message below!
-    </p>
+  <h1>Contact Me</h1>
+  <p>
+    Have a question about a Playwright script, a craft pattern, or privacy? Send
+    a message below!
+  </p>
 
-    <form
-        class="contact-form"
-        action="https://formspree.io/f/YOUR_FORM_ID"
-        method="POST"
-    >
-        <div class="form-input">
-            <label class="label-name" for="name">Name:</label>
-            <input type="text" id="name" name="name" required />
-        </div>
-        <div class="form-input">
-            <label class="label-name" for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-        </div>
-        <div class="form-input">
-            <label class="label-name" for="message">Message:</label>
-            <textarea
-                class="textarea"
-                id="message"
-                name="message"
-                rows="7"
-                required></textarea>
-        </div>
-        <button type="submit">Send Message</button>
-    </form>
+  <form
+    class="contact-form"
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+  >
+    <div class="form-input">
+      <label class="label-name" for="name">
+        Name:
+      </label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    <div class="form-input">
+      <label class="label-name" for="email">
+        Email:
+      </label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    <div class="form-input">
+      <label class="label-name" for="message">
+        Message:
+      </label>
+      <textarea
+        class="textarea"
+        id="message"
+        name="message"
+        rows="7"
+        required
+      ></textarea>
+    </div>
+    <button type="submit">Send Message</button>
+  </form>
 </BaseLayout>
 
 <style>
-    .textarea {
-        width: 40rem;
-    }
+  .textarea {
+    width: 40rem;
+  }
 
-    .label-name {
-        padding-right: 1rem;
-    }
+  .label-name {
+    padding-right: 1rem;
+  }
 
-    .form-input {
-        padding-bottom: 1.125rem;
-    }
+  .form-input {
+    padding-bottom: 1.125rem;
+  }
 </style>
